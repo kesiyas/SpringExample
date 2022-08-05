@@ -14,9 +14,17 @@ public class ReviewBO {
 	private ReviewDAO reviewDAO;
 	
 	// 특정 id의 review 얻어와서 리턴
-	public Review getReview(@Param("id") int id) {
+	public Review getReview(int id) {
 		Review review = reviewDAO.selectReview(id);
 		
 		return review;
 	}
+	
+	// 가게 id, 메뉴, 사용자이름, 별점, 리뷰내용 전달받아서 저장
+	public int addReview(int storeId, String menu, String userName, double point, String review) {
+		
+		return reviewDAO.insertReview(storeId, menu, userName, point, review);
+		
+	}
+	
 }
