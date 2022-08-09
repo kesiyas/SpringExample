@@ -20,7 +20,7 @@ public class UserBO {
 		return userDAO.insertUser(name, brithDay, introduce, email);
 	}
 	
-	public User user() {
+	public User lastUser() {
 		
 		return userDAO.selectUser();
 	}

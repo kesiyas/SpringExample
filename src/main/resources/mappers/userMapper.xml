@@ -33,7 +33,8 @@
 	<select id="selectUser" resultType="com.kasiyas.spring.ex.jsp.model.User">
 		
 		SELECT
-			`name`
+			`id`
+			,`name`
 			, `yyyymmdd` 
 			, `introduce`
 			, `email`
