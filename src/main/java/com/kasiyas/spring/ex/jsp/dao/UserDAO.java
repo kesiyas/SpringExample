@@ -14,6 +14,9 @@ public interface UserDAO {
 				,@Param("introduce") String introduce
 				,@Param("email") String email);
 		
+		// insert된 값 가져오기
+		public int insertUserByObject(User user);
+		
 		public User selectUser();
 	
 }

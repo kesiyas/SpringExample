@@ -4,12 +4,20 @@ import java.util.Date;
 
 public class User {
 	
+	private int id;
 	private String name;
 	private String yyyymmdd;
 	private String introduce;
 	private String email;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getName() {
 		return name;
