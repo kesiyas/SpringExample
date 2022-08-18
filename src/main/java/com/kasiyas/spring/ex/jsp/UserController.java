@@ -44,6 +44,11 @@ public class UserController {
 		return "jsp/userInput";
 	}
 	
+	@RequestMapping("/info")
+	public String userinfo() {	
+		return "jsp/userInfo";
+	}
+	
 	// 가장 최근에 등록된 사용자 정보를 하나 얻어 오는 기능
 	@GetMapping("/lastuser")
 	public String lastUser(Model model) {
