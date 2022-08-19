@@ -13,13 +13,41 @@
 	<!-- <form method="get" action="/ajax/user/add" id="userForm"> -->
 		<label>이름 </label> <input type="text" name="name" id="nameInput"> <br>
 		<label>생년월일 </label> <input type="text" name="birthDay" id="birthDayInput"> <br>
-		<label>이메일 </label> <input type="text" name="email" id="emailInput"> <br>
+		<label>이메일 </label> <input type="text" name="email" id="emailInput"> <button type="button" id="checkBtn">중복확인</button><br>
 		<button type="button" id="saveBtn">저장</button>
 	<!-- </form> -->
 	
 	<script>
 		$(document).ready(function(){
 			
+			${"#checkBtn"}.on("click", function() {
+				let email = $("#emailInput").val();
+				
+				if(email == "") {
+					alert("이메일을 입력하세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/ajax/user/is_duplicate"
+					, data:{"email":email}
+					, success:function() {
+						// {"isDuplicate":true} or {"isDuplicate":false}
+						if(data.isDuplicate) {
+							alert("중복되었습니다")
+						} else {
+							alert("사용가능합니다")
+						}
+					}
+					, error:function() {
+						alert("중복 확인 에러");						
+					}
+					
+				});			
+			});
+			
+		
 			$("#saveBtn").on("click", function(){
 				
 				let name = $("#nameInput").val();
@@ -60,7 +88,6 @@
 					,error:function(){
 						alert("저장 에러");
 					}
-
 				});
 				
 				

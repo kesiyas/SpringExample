@@ -60,4 +60,24 @@ public class UserContorller {
 		
 		return map;
 	}
+	
+	
+	// api
+	// email 중복 여부를 알려주는 api
+	@GetMapping("/is_duplicate")
+	public Map<String, Boolean> isDuplicate(@RequestParam("email") String email) {
+		
+		boolean isDuplicate = newUserBO.isDuplicateEmail(email);
+		// {"isDuplicate":true} or {"isDuplicate":false}
+		Map<String, Boolean> map = new HashMap<>();
+		
+		if(isDuplicate) {
+			map.put("is_duplicate", true);
+		} else {
+			map.put("is_duplicate", false);			
+		}
+		
+		return map;
+	}
+		
 }
